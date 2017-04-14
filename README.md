@@ -6,7 +6,7 @@ Fixes footnote ordering in GitBook.
 
 ## The Problem
 
-If you create footnotes in [GitBook](https://www.gitbook.com), they number them in the sequence you created your footnotes, not of the order of appearance. Unless you strictly write your text and insert footnotes from top to bottom, you end up with footnotes numbers that are out of order.
+If you create footnotes in [GitBook](https://www.gitbook.com), they number them in the sequence you created your footnotes, not of the order of appearance. Unless you strictly write your text and insert footnotes from top to bottom, you end up with footnote numbers that are out of order.
 
 Example: say you insert a footnote on before the other ones. What you get is:
 
@@ -46,11 +46,10 @@ To prepare:
 
 on the file(s) you want to fix.
 
-5. Add, commit and push
+5. Add, commit and push.
 6. Check if sync back to GitBook worked.
 
-Note: if you omit writefile, it changes your file in place without backup. This assumes you are using it within a git repository, so you can easily rollback if something goes wrong.
-It also assumes you have the footnotes at the end of the file and use the standard numbering 1, 2, 3 ... that comes with the GitBook web editor.
-It will probably do nasty things if you have manually edited your MarkDown file like adding thins at the end etc.
+Note: if you omit writefile, it will change your file in place without backup. This assumes you are using it within a git repository, so you can easily rollback if something goes wrong.
+It also assumes you have the footnotes at the end of the file and use the standard numbering 1, 2, 3 ... like what comes out of the GitBook web editor. It will probably do nasty things if you have manually edited your MarkDown file like adding things at the end etc.
 
 A quick fix that works for me but has not properly tested. Use at your own risk.
