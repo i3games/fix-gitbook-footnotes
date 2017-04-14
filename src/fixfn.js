@@ -23,7 +23,7 @@ const fixfn = (err, text) => {
   // create a list from the footnotes: indices and text. sort this according to fn_markers
   let fn, fn_start
   while (fn = fn_re.exec(text)) {
-    if (fn_start == null) { fn_start = fn.index }
+    if (fn_start == null) { fn_start = fn.index } // get the start of the footnote area
     fn_list.push({index: fn[1], footnote: fn[2]})
   }
   fn_list.sort((a, b) => {
@@ -39,21 +39,15 @@ const fixfn = (err, text) => {
   let i = 0
   text = text.replace(fn_marker_re, () => { return `[^${fn_markers[i++]}]` })
 
-  // replace the indices in fn_list by the sorted markers as well 
+  // replace the indices in fn_list by the sorted markers as well
   i = 0
-  for (let fn of fn_list) {
-    fn.index = fn_markers[i++]
-  }
+  for (let fn of fn_list) {  fn.index = fn_markers[i++] }
 
   // append the footnotes
-  for (let fn of fn_list) {
-    text = text.concat(`[^${fn.index}]:`, fn.footnote, os.EOL, os.EOL)
-  }
+  for (let fn of fn_list) { text = text.concat(`[^${fn.index}]:`, fn.footnote, os.EOL, os.EOL) }
 
   // write the file
-  fs.writeFile(writepath, text, (err) => {
-    if (err) throw err
-  });
+  fs.writeFile(writepath, text, (err) => { if (err) throw err });
 }
 
 const readpath = process.argv[2]
