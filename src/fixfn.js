@@ -51,7 +51,7 @@ const fixfn = (err, text) => {
 }
 
 const readpath = process.argv[2]
-const writepath = process.argv[3]
+let writepath = process.argv[3]
 if (readpath == null) { return console.log('usage: node fixfn.js filename [writefile]') }
 if (writepath == null) { writepath = readpath }
 fs.readFile(readpath, 'utf8', fixfn)
