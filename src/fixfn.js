@@ -7,8 +7,7 @@
 const fs = require('fs')
 const os = require('os')
 
-const fixfn = (err, text) => {
-  if (err) { return console.log(`cannot open file: ${err.path}`) }
+const fixfn = (text) => {
 
   const fn_marker_re = /\[\^([0-9]+)\]/g  // footnote markers -> numbers; unfortunately we can't exclude : [^:], or exclude if it is at the beginning of the line
   const fn_re = /\[\^([0-9]+)\]:(.+)/g    // footnotes -> numbers, text
@@ -46,12 +45,14 @@ const fixfn = (err, text) => {
   // append the footnotes
   for (let fn of fn_list) { text = text.concat(`[^${fn.index}]:`, fn.footnote, os.EOL, os.EOL) }
 
-  // write the file
-  fs.writeFile(writepath, text, (err) => { if (err) throw err });
+  return text
 }
 
 const readpath = process.argv[2]
 let writepath = process.argv[3]
 if (readpath == null) { return console.log('usage: node fixfn.js filename [writefile]') }
 if (writepath == null) { writepath = readpath }
-fs.readFile(readpath, 'utf8', fixfn)
+fs.readFile(readpath, 'utf8', (err, text) => {
+  if (err) { return console.log(`cannot open file: ${err.path}`) }
+  fs.writeFile(writepath, fixfn(text), (err) => { if (err) throw err });
+})

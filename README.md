@@ -20,7 +20,7 @@ And your footnotes:
 
 According to [gitbook](https://github.com/GitbookIO/feedback/issues/472), this is a feature, not a bug.
 
-What you want:
+What you probably want:
 
 My text where the footnotes are ordered[1] like[2] this[3].
 
@@ -37,7 +37,7 @@ Requirements: [node.js](https://nodejs.org/)
 To prepare:
 
 1. Connect your GitBook with GitHub.
-2. Publish your book edits and check if the synchronization to GitHub works in your GitBook settings(!).
+2. Publish your book edits and check if the synchronization to GitHub works in your GitBook settings(!). Sync manually if necessary.
 3. Head over to your GitHub repository and clone.
 
 4. Run:  
