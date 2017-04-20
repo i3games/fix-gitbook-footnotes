@@ -1,0 +1,20 @@
+{
+  "name": "fix-gitbook-footnotes",
+  "version": "1.0.0",
+  "description": "Fixes footnote ordering in GitBook.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "standard /src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i3games/fix-gitbook-footnotes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/i3games/fix-gitbook-footnotes/issues"
+  },
+  "homepage": "https://github.com/i3games/fix-gitbook-footnotes#readme"
+}

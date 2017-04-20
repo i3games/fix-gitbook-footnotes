@@ -39,8 +39,8 @@ const fixfn = (text) => {
   text = text.replace(fn_marker_re, () => { return `[^${fn_markers[i++]}]` })
 
   // replace the indices in fn_list by the sorted markers as well
-  i = 0
-  for (let fn of fn_list) {  fn.index = fn_markers[i++] }
+  let j = 0
+  for (let fn of fn_list) {  fn.index = fn_markers[j++] }
 
   // append the footnotes
   for (let fn of fn_list) { text = text.concat(`[^${fn.index}]:`, fn.footnote, os.EOL, os.EOL) }
@@ -54,5 +54,5 @@ if (readpath == null) { return console.log('usage: node fixfn.js filename [write
 if (writepath == null) { writepath = readpath }
 fs.readFile(readpath, 'utf8', (err, text) => {
   if (err) { return console.log(`cannot open file: ${err.path}`) }
-  fs.writeFile(writepath, fixfn(text), (err) => { if (err) throw err });
+  fs.writeFile(writepath, fixfn(text), (err) => { if (err) throw err })
 })
